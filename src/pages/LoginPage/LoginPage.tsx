@@ -1,0 +1,79 @@
+import { useState, type FormEvent, type SyntheticEvent } from "react"
+import "./LoginPage.css"
+
+type loginErrs = {
+  email: boolean,
+  password: boolean
+}
+
+const LoginPage = () => {
+  const [errs, setErrs] = useState<loginErrs>({email: false, password: false})
+
+  const handleLogin = async (e: SyntheticEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    setErrs({email: false, password: false})
+
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
+
+    let currentErrs = {...errs}
+
+    const emailRegex = /^[\w.+-]+@[a-z0-9_]+(\.[a-z0-9]+)*\.[a-z]{2,}$/i
+    const isValid = emailRegex.test(email)
+    
+    if(!email || !isValid){
+      setErrs(prev => ({...prev, email: true}));
+      return;
+    }
+
+    const passRegex = /^[^\p{Emoji}]*$/u
+    const validPass = passRegex.test(password);
+
+    if(!password || password.length < 5 || !validPass){
+      setErrs(prev => ({...prev, password: true}));
+      return;
+    }
+  }
+
+  return (
+    <main className="main-content">
+        <div className="pageDesign">
+          <img src="/logo.png" className="logo"/>
+          <img src="3375888.jpg" className="artDesign"/>
+          <h1>Check with your <span style={{color: "#075B5E"}}>People</span>!</h1>
+        </div>
+        <section className="formSection">
+            <form onSubmit={(e) => handleLogin(e)} className="loginPageForm">
+                <h1>Log into PeopleSpace</h1>
+                <div className="loginThings">
+                  <fieldset className="formInputs">
+                    <div style={{display: "flex", flexDirection: "column", gap: 7}}>
+                      <input onChange={() => setErrs(prev => ({...prev, email: false}))} type="text" name="email" placeholder="Email"/>
+                      {errs.email && (
+                        <small style={{color: "red"}}>The email you entered isn't connected to an account.</small>
+                      )}
+                    </div>
+                    <div style={{display: "flex", flexDirection: "column", gap: 7}}>
+                      <input onChange={() => setErrs(prev => ({...prev, password: false}))} type="text" name="password" placeholder="Password"/>
+                      {errs.password && (
+                        <small style={{color: "red"}}>The password you entered is incorrect.</small>
+                      )}
+                      
+                    </div>
+                  </fieldset>
+                  <div className="formBtns">
+                    <button className="logInbtn">Log in</button>
+                    <a href="/" className="frgtbtn">Forgot Password?</a>
+                    <button className="signUpBtn">Create new account</button>
+                  </div>
+                </div>
+
+            </form>
+        </section>
+    </main>
+  )
+}
+
+export default LoginPage
