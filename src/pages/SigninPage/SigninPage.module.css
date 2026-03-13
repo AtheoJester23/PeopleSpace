@@ -133,6 +133,11 @@ legend{
     cursor: pointer;
 }
 
+.dropDownIcon{
+    position: absolute;
+    right: 15px;
+}
+
 .btns{
     display: flex;
     flex-direction: column;

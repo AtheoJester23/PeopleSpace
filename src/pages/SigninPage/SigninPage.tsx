@@ -1,4 +1,4 @@
-import { ChevronLeft } from "lucide-react"
+import { ChevronDown, ChevronLeft } from "lucide-react"
 import styles from './SigninPage.module.css'
 import React, { useEffect, useRef, useState } from "react"
 
@@ -188,60 +188,129 @@ const SigninPage = () => {
             <fieldset>
                 <legend>Birthday</legend>
                 <div className={styles.regVertStyle}>
-                    <div ref={monthRef} tabIndex={0} role="listbox" aria-expanded={openMonth} className={styles.sel} onClick={() => setOpenMonth(prev => !prev)}>
+                    <div ref={monthRef} tabIndex={0} role="listbox" aria-expanded={openMonth} className={styles.sel} onClick={() => setOpenMonth(prev => !prev)} 
+                        onKeyDown={(e) => {
+                            if(e.key === "Enter" || e.key === " "){
+                                e.preventDefault();
+                                setOpenMonth(true)
+                            }
+                        }}>
                         {selected ?? "Month"}
                         {openMonth && (
                             <ul role="listbox" className={styles.optionCont} style={{borderRadius: "20px"}}>
                                 {months.map((item) => (
-                                    <li role="option" aria-selected={selected === item} tabIndex={0} onClick={(e) => {
-                                        handleSelectMonth(e, item)
-                                    }} className={styles.optionlist} key={item} >{item}</li>
+                                    <li role="option" aria-selected={selected === item} tabIndex={0} 
+                                        onKeyDown={(e) => {
+                                            if(e.key === "Enter" || e.key === " "){
+                                                e.preventDefault();
+                                                e.stopPropagation();
+                                                setOpenMonth(false);
+                                                setSelectedMonth(item);
+                                            }
+                                        }}
+                                        onClick={(e) => {
+                                            handleSelectMonth(e, item)
+                                        }} className={styles.optionlist} key={item} 
+                                    >{item}</li>
                                 ))}
                             </ul>
                         )}
+                        <ChevronDown className={styles.dropDownIcon}/>
                     </div> 
 
-                    <div ref={dayRef} tabIndex={0} role="listbox" aria-expanded={openDay} className={styles.sel} onClick={() => setOpenDay(prev => !prev)}>
+                    <div ref={dayRef} tabIndex={0} role="listbox" aria-expanded={openDay} className={styles.sel} onClick={() => setOpenDay(prev => !prev)}
+                        onKeyDown={(e) => {
+                            if(e.key === "Enter" || e.key === " "){
+                                e.preventDefault();
+                                setOpenDay(true)
+                            }
+                        }}    
+                    >
                         {selectedDay ?? "Day"}
                         {openDay && (
                             <ul role="listbox" className={styles.optionCont} style={{borderRadius: "20px"}}>
                                 {selected == "February" ? (
                                     [...Array(29)].map((_, i) => (
-                                        <li role="option" aria-selected={selectedDay === i} tabIndex={0} onClick={(e) => {handleSelectDay(e, i + 1)}} key={i + 1} value={i + 1} className={styles.optionlist}>
+                                        <li role="option" aria-selected={selectedDay === i + 1} tabIndex={0} onClick={(e) => {handleSelectDay(e, i + 1)}} key={i + 1} value={i + 1} className={styles.optionlist}
+                                            onKeyDown={(e) => {
+                                                if(e.key === "Enter" || e.key === " "){
+                                                    e.preventDefault();
+                                                    e.stopPropagation();
+                                                    setOpenDay(false);
+                                                    setSelectedDay(i + 1);
+                                                }
+                                            }}
+                                        >
                                             {i + 1}
                                         </li>
                                     ))
                                 ) : selected == "April" || selected == "June" || selected == "September" || selected == "November" ? (
                                     [...Array(30)].map((_, i) => (
-                                        <li role="option" aria-selected={selectedDay === i} tabIndex={0} onClick={(e) => {handleSelectDay(e, i + 1)}} key={i + 1} value={i + 1} className={styles.optionlist}>
+                                        <li role="option" aria-selected={selectedDay === i} tabIndex={0} onClick={(e) => {handleSelectDay(e, i + 1)}} key={i + 1} value={i + 1} className={styles.optionlist}
+                                            onKeyDown={(e) => {
+                                                if(e.key === "Enter" || e.key === " "){
+                                                    e.preventDefault();
+                                                    e.stopPropagation();
+                                                    setOpenDay(false);
+                                                    setSelectedDay(i + 1);
+                                                }
+                                            }}
+                                        >
                                             {i + 1}
                                         </li>
                                     ))
                                 ):(
                                     [...Array(31)].map((_, i) => (
-                                        <li role="option" aria-selected={selectedDay === i} tabIndex={0} onClick={(e) => {handleSelectDay(e, i + 1)}} key={i + 1} value={i + 1} className={styles.optionlist}>
+                                        <li role="option" aria-selected={selectedDay === i} tabIndex={0} onClick={(e) => {handleSelectDay(e, i + 1)}} key={i + 1} value={i + 1} className={styles.optionlist}
+                                            onKeyDown={(e) => {
+                                                if(e.key === "Enter" || e.key === " "){
+                                                    e.preventDefault();
+                                                    e.stopPropagation();
+                                                    setOpenDay(false);
+                                                    setSelectedDay(i + 1);
+                                                }
+                                            }}
+                                        >
                                             {i + 1}
                                         </li>
                                     ))
                                 )}
                             </ul>
                         )}
+                        <ChevronDown className={styles.dropDownIcon}/>
                     </div> 
 
-                    <div ref={yearRef} tabIndex={0} role="listbox" aria-expanded={openYear}  className={styles.sel} onClick={() => setOpenYear(prev => !prev)}>
+                    <div ref={yearRef} tabIndex={0} role="listbox" aria-expanded={openYear}  className={styles.sel} onClick={() => setOpenYear(prev => !prev)}
+                        onKeyDown={(e) => {
+                            if(e.key === "Enter" || e.key === " "){
+                                e.preventDefault();
+                                setOpenYear(true)
+                            }
+                        }}
+                    >
                         {selectedYear ?? "Year"}
                         {openYear && (
                             <ul role="listbox" className={styles.optionCont} style={{borderRadius: "20px"}}>
                                 {Array.from({ length: currentYear - startYear + 1 }, (_, i) => {
                                     const year = currentYear - i;
                                     return (
-                                        <li role="option" aria-selected={selectedYear === year} tabIndex={0} onClick={(e) => handleSelectYear(e, year)} key={year} value={year} className={styles.optionlist}>
+                                        <li role="option" aria-selected={selectedYear === year} tabIndex={0} onClick={(e) => handleSelectYear(e, year)} key={year} value={year} className={styles.optionlist}
+                                            onKeyDown={(e) => {
+                                                if(e.key === "Enter" || e.key === " "){
+                                                    e.preventDefault();
+                                                    e.stopPropagation();
+                                                    setOpenYear(false);
+                                                    setSelectedYear(year);
+                                                }
+                                            }}
+                                        >
                                             {year}
                                         </li>
                                     );
                                 })}
                             </ul>
                         )}
+                        <ChevronDown className={styles.dropDownIcon}/>
                     </div> 
                 </div>
             </fieldset>
@@ -249,17 +318,44 @@ const SigninPage = () => {
             <fieldset>
                 <legend>Gender</legend>
                 <div className={styles.regVertStyle}>
-                    <div tabIndex={0} role="listbox" aria-expanded={openGender} ref={genderRef} className={styles.sel} onClick={() => setOpenGender(prev => !prev)}>
+                    <div tabIndex={0} role="listbox" aria-expanded={openGender} ref={genderRef} className={styles.sel} onClick={() => setOpenGender(prev => !prev)}
+                        onKeyDown={(e) => {
+                            if(e.key === "Enter" || e.key === " "){
+                                e.preventDefault();
+                                setOpenGender(true)
+                            }
+                        }}    
+                    >
                         {selectedGender ?? "Select your gender"}
                         <div>
                             {openGender && (
                                 <ul role="listbox" className={styles.optionCont}>
-                                    <li role="option" aria-selected={selectedGender === "Male"} tabIndex={0} onClick={(e) => handleSelectGender(e, "Male")} className={styles.optionlist}>Male</li>
-                                    <li role="option" aria-selected={selectedGender === "Female"} tabIndex={0} onClick={(e) => handleSelectGender(e, "Female")} className={styles.optionlist}>Female</li>
+                                    <li role="option" aria-selected={selectedGender === "Male"} tabIndex={0} onClick={(e) => handleSelectGender(e, "Male")} className={styles.optionlist}
+                                        onKeyDown={(e) => {
+                                            if(e.key === "Enter" || e.key === " "){
+                                                e.preventDefault();
+                                                e.stopPropagation();
+                                                setOpenGender(false);
+                                                setSelectedGender("Male");
+                                            }
+                                        }}    
+                                    >Male</li>
+                                    <li role="option" aria-selected={selectedGender === "Female"} tabIndex={0} onClick={(e) => handleSelectGender(e, "Female")} className={styles.optionlist}
+                                        onKeyDown={(e) => {
+                                            if(e.key === "Enter" || e.key === " "){
+                                                e.preventDefault();
+                                                e.stopPropagation();
+                                                setOpenGender(false);
+                                                setSelectedGender("Female");
+                                            }
+                                        }}       
+                                    >Female</li>
                                 </ul>
                             )}
                         </div>
+                        <ChevronDown className={styles.dropDownIcon}/>
                     </div>
+                    
                 </div>
             </fieldset>
 
