@@ -18,8 +18,6 @@ const LoginPage = () => {
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
 
-    let currentErrs = {...errs}
-
     const emailRegex = /^[\w.+-]+@[a-z0-9_]+(\.[a-z0-9]+)*\.[a-z]{2,}$/i
     const isValid = emailRegex.test(email)
     
@@ -42,6 +40,7 @@ const LoginPage = () => {
         <div className="pageDesign">
           <img src="/logo.png" className="logo"/>
           <img src="3375888.jpg" className="artDesign"/>
+          <a href="http://www.freepik.com" style={{textDecoration: "none", color: "black", fontSize: "10px"}}>Designed by pikisuperstar / Freepik</a>
           <h1>Check with your <span style={{color: "#075B5E"}}>People</span>!</h1>
         </div>
         <section className="formSection">
@@ -66,7 +65,7 @@ const LoginPage = () => {
                   <div className="formBtns">
                     <button className="logInbtn">Log in</button>
                     <a href="/" className="frgtbtn">Forgot Password?</a>
-                    <button className="signUpBtn">Create new account</button>
+                    <a href="/reg" className="signUpBtn">Create new account</a>
                   </div>
                 </div>
 

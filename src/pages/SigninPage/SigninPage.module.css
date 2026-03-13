@@ -1,0 +1,174 @@
+.mainContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: screen;
+    padding: 40px 0px 100px 0px
+}
+
+.backBtn{
+    border-radius: 30px;
+    border: none;
+    padding: 8px;
+    width: 24px;
+    height: auto;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    background-color: white;
+}
+
+.backBtn:hover{
+    background-color: rgb(245, 245, 245);
+    cursor: pointer;
+}
+
+.regVertStyle{
+    display: flex;
+    flex-direction: column;
+}
+
+.signInForm{
+    width: 42%;
+}
+
+.signInForm h1{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.userInfo{
+    margin: 0;
+    padding: 0;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+fieldset{
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+legend{
+    font-weight: bold;
+}
+
+.signInForm input{
+    height: 55px;
+    font-family: "Inter", sans-serif;
+    border-radius: 20px;
+    border: solid;
+    border-width: 1px;
+    padding: 0px 20px;
+    border-color: gray;
+    flex: 1;
+    appearance: none;
+}
+
+.signInForm input:focus{
+    outline: none;
+    border: solid;
+    border-width: 1px;
+}
+
+.signInForm input:hover{
+    border-color: rgb(23,23,23);
+}
+
+.regVertStyle{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.sel{
+    width: 100%;
+    font-family: "Inter", sans-serif;
+    height: 55px;
+    border-radius: 20px;
+    border: solid;
+    border-width: 1px;
+    padding: 0px 20px;
+    border-color: gray;
+    flex: 1;
+    appearance: none;
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer
+}
+
+.sel:hover{
+    border-color: rgb(23,23,23);
+}
+
+.optionCont{
+    list-style: none;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 150px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.optionlist{
+    padding: 20px;
+    background-color: white;
+}
+
+.optionlist:hover{
+    background-color: rgb(240, 240, 240);
+    cursor: pointer;
+}
+
+.btns{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 10px;
+}
+
+.submitBtn{
+    background-color: #075B5E;
+    font-size: 15px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 30px;
+    width: 100%;
+}
+
+.submitBtn:hover{
+    background-color: #075255;
+    cursor: pointer;
+}
+
+.cancelCreate{
+    text-decoration: none;
+    color: rgb(23,23,23);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    border-radius: 30px;
+    border: solid;
+    border-width: 1px;
+    border-color: gray;
+}
+
+.cancelCreate:hover{
+    background-color: rgb(240,240,240);
+}

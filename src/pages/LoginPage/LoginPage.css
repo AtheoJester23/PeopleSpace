@@ -133,6 +133,10 @@
     font-weight: bold;
     padding: 15px;
     border-radius: 30px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .loginPageForm .signUpBtn:hover{
