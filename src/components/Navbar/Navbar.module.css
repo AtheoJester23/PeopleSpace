@@ -39,6 +39,7 @@
     align-items: center;
     color: var(--theme-text);
     background-color: var(--btnColor);
+    position: relative;
 }
 
 .rightSideIcons:hover{
@@ -46,15 +47,48 @@
     cursor: pointer;
 }
 
+
+.hoverIcon{
+    position: absolute;
+    bottom: -55px;
+    left: -20px;
+    color: var(--nav-bg);
+    border-radius: 10px;
+    background-color: var(--theme-text);
+    padding: 10px;
+    display: none;
+}
+
+.rightSideIcons:hover .hoverIcon{
+    display: block;
+}
+
 .profPic{
     /* background-color: cyan; */
     text-decoration: none;
+    position: relative;
+}
+
+.hoverProf{
+    position: absolute;
+    bottom: -40px;
+    left: -15px;
+    color: var(--nav-bg);
+    font-size: 13px;
+    border-radius: 10px;
+    background-color: var(--theme-text);
+    padding: 10px;
+    display: none;
+}
+
+.profPic:hover .hoverProf{
+    display: block;
 }
 
 .tempProf{
     text-decoration: none;
     color: white;
-    padding: 8px 13px;
+    padding: 9px 14px;
     border-radius: 20px;
     background-color: black;
 }

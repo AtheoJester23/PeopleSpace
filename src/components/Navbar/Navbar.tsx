@@ -57,12 +57,15 @@ const Navbar = () => {
           </button>
           <button className={styles.rightSideIcons}>
             <MessageCircleMore size={20}/>
+            <p className={styles.hoverIcon}>Messages</p>            
           </button>
           <button className={styles.rightSideIcons}>
             <Bell size={20}/>
+            <p className={styles.hoverIcon}>Notification</p>
           </button>
           <Link to={`/home`} className={styles.profPic}>
             <p className={styles.tempProf}>A</p>
+            <p className={styles.hoverProf}>Profile</p>
           </Link>
         </div>
     </nav>
