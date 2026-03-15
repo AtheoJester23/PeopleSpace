@@ -4,9 +4,17 @@ import LoginPage from './pages/LoginPage/LoginPage'
 import SigninPage from './pages/SigninPage/SigninPage'
 import HomePage from './pages/HomePage/HomePage'
 import MainLayouts from './layouts/MainLayouts'
+import { useSelector } from 'react-redux'
+import type { RootState } from './state/store'
+import { useEffect } from 'react'
 
 function App() {
-  
+  const theme = useSelector((state: RootState) => state.theme.mode);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", theme === "dark")
+  }, [theme])
+
   return (
     <BrowserRouter>
       <Routes>

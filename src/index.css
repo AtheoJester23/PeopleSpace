@@ -1,3 +1,13 @@
+:root {
+  --nav-bg: white;
+  --main-bg: rgb(242,244,247)
+}
+
+.dark {
+  --nav-bg: rgb(36,37,38);
+  --main-bg: rgb(24,25,26);
+}
+
 body{
   margin: 0;
   font-family: "Inter", sans-serif;

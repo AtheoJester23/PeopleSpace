@@ -3,8 +3,13 @@ import styles from './Navbar.module.css'
 import { style } from 'framer-motion/client'
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import type { AppDispatch, RootState } from '../../state/store'
+import { setTheme } from '../../state/theme/themeSlice'
 
 const Navbar = () => {
+  const theme = useSelector((state: RootState) => state.theme.mode);
+  const dispatch = useDispatch<AppDispatch>()
   const searchRef = useRef<HTMLInputElement>(null);
   const logoRef = useRef<HTMLImageElement>(null)
   const [hidLogo, setHidLogo] = useState(false)
@@ -47,6 +52,9 @@ const Navbar = () => {
         </div>
 
         <div className={styles.right}>
+          <button onClick={() => dispatch(setTheme(theme == "light" ? "dark" : "light"))}>
+            {theme == "light" ? "light" : "dark"}
+          </button>
           <button className={styles.rightSideIcons}>
             <MessageCircleMore size={20}/>
           </button>
