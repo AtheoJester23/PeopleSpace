@@ -1,0 +1,12 @@
+:root{
+    --bgColor: rgb(242, 244, 247)
+}
+
+:root.dark-theme{
+    --bgColor: rgb(28,30,33);
+}
+
+.mainCont{
+    background-color: var(--bgColor);
+    height: 100vh;
+}

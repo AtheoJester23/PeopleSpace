@@ -1,5 +1,8 @@
 import { useState, type FormEvent, type SyntheticEvent } from "react"
+import { motion } from 'framer-motion'
 import "./LoginPage.css"
+import supabase from "../../config/supabaseClient"
+import { useNavigate } from "react-router-dom"
 
 type loginErrs = {
   email: boolean,
@@ -8,6 +11,7 @@ type loginErrs = {
 
 const LoginPage = () => {
   const [errs, setErrs] = useState<loginErrs>({email: false, password: false})
+  const navigate = useNavigate();
 
   const handleLogin = async (e: SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -29,9 +33,23 @@ const LoginPage = () => {
     const passRegex = /^[^\p{Emoji}]*$/u
     const validPass = passRegex.test(password);
 
-    if(!password || password.length < 5 || !validPass){
+    if(!password || password.length < 5 ){
       setErrs(prev => ({...prev, password: true}));
       return;
+    }
+
+    console.log(email, password);
+
+    try {
+      const { data: authData, error: authError } = await supabase.auth.signInWithPassword({email, password});
+      
+      if(authError) throw authError;
+      console.log("Logged in successfully: ", authData);
+      
+      navigate("/home")
+
+    } catch (error) {
+      console.error((error as Error).message)
     }
   }
 

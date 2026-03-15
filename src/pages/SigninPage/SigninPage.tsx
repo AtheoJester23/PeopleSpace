@@ -1,6 +1,9 @@
 import { ChevronDown, ChevronLeft } from "lucide-react"
 import styles from './SigninPage.module.css'
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState, type SyntheticEvent } from "react"
+import supabase from '../../config/supabaseClient.ts'
+import { useNavigate } from "react-router-dom"
+
 
 type possibleErrs = {
     firstName: boolean,
@@ -10,6 +13,7 @@ type possibleErrs = {
         day: boolean,
         year: boolean
     },
+    gender: boolean,
     email: boolean,
     password: boolean,
 }
@@ -31,9 +35,11 @@ const SigninPage = () => {
             day: false,
             year: false
         },
+        gender: false,
         email: false,
         password: false
     })
+    const navigate = useNavigate();
     
     //Name:
     const [touched, setTouched] = useState<typeTouch>({fName: false, lName:false, email: false, password: false})
@@ -90,6 +96,100 @@ const SigninPage = () => {
         e.stopPropagation();
         setOpenGender(false);
         setSelectedGender(value);
+    }
+
+    const handleSubmit = async (e: SyntheticEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.currentTarget);
+        const name = formData.get("firstName") as string
+        const lastName = formData.get("lastName") as string
+        const email = formData.get("email") as string
+        const password = formData.get("password") as string
+
+        const errors: possibleErrs = {...errs};
+
+        if(!name || name.trim() == ""){
+            errors.firstName = true;
+        }
+
+        if(!lastName || lastName.trim() == ""){
+            errors.lastName = true
+        }
+
+        if(!selected){
+            errors.bday.month = true;
+        }
+
+        if(!selectedDay){
+            errors.bday.day = true;
+        }
+
+        if(!selectedYear){
+            errors.bday.year = true;
+        }
+
+        if(!selectedGender){
+            errors.gender = true;
+        }
+
+        if(!email || email.trim() == ""){
+            errors.email  = true;
+        }
+
+        if(!password || password.trim() == ""){
+            errors.password = true;
+        }
+
+        if(Object.values(errors).includes(true)){
+            alert("there's some error")
+            return;
+        }
+
+        const birthdayString = `${selected} ${selectedDay}, ${selectedYear}` 
+
+        const convertBDay = new Date(birthdayString);
+
+        const formattedBDay = convertBDay.toISOString().split('T')[0];
+
+        console.log(formattedBDay);
+
+        try {
+            //Create user account
+            const { data: authData, error: authError } = await supabase.auth.signUp({
+                email,
+                password
+            })
+
+            if (authError) throw authError;
+
+            if (!authData.user) {
+                throw new Error('User creation failed, no user returned.');
+            }
+
+            console.log('Signed up:', authData.user);
+            
+            //Update user's account:
+            const { data, error } = await supabase.from('profiles').upsert({
+                id: authData.user.id,
+                firstname: name,
+                lastname: lastName,
+                username: name + lastName,
+                gender: selectedGender,
+                birthday: formattedBDay,
+            })
+            .select('id, username');
+
+            if (error) throw error;
+
+            console.log('Process complete: ', data)
+
+            navigate("/");
+        } catch (error) {
+            console.error((error as Error).message)
+        }
+        
+        console.log(name, lastName, selected, selectedDay, selectedYear, selectedGender, email, password)
     }
 
     useEffect(() => {
@@ -168,7 +268,7 @@ const SigninPage = () => {
 
   return (
     <main className={styles.mainContent}>
-      <form className={styles.signInForm}>
+      <form className={styles.signInForm} onSubmit={(e) => handleSubmit(e)}>
         <div >
             <a href="/" style={{textDecoration: "none", color: "black"}} className={styles.backBtn}>
                 <ChevronLeft/>
@@ -369,7 +469,7 @@ const SigninPage = () => {
             <fieldset>
                 <legend>Password</legend>
                 <div className={styles.regVertStyle}>
-                    <input ref={passRef} onFocus={() => setTouched(prev => ({...prev, password: true}))} type="text" name="firstName" placeholder="Password" style={{borderColor: errs.password ? "red" : ''}} onChange={() => setErrs(prev => ({...prev, password: false}))}/>
+                    <input ref={passRef} onFocus={() => setTouched(prev => ({...prev, password: true}))} type="text" name="password" placeholder="Password" style={{borderColor: errs.password ? "red" : ''}} onChange={() => setErrs(prev => ({...prev, password: false}))}/>
                 </div>
             </fieldset>
 
