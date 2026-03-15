@@ -1,11 +1,18 @@
 :root {
   --nav-bg: white;
-  --main-bg: rgb(242,244,247)
+  --main-bg: rgb(242,244,247);
+  --rightSideIcons-bg:  rgb(242, 244, 247);
+  --theme-text: black;
+  --btnColor: rgb(242,244,247);
+  --hoverBtn: rgb(219, 219, 219)
 }
 
 .dark {
   --nav-bg: rgb(36,37,38);
   --main-bg: rgb(24,25,26);
+  --btnColor: rgb(58,59,60);
+  --theme-text: rgb(242,244,247);
+  --hoverBtn: rgb(80,80,80)
 }
 
 body{
