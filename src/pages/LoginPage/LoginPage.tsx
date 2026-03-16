@@ -3,6 +3,10 @@ import { motion } from 'framer-motion'
 import "./LoginPage.css"
 import supabase from "../../config/supabaseClient"
 import { useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import type { AppDispatch } from "../../state/store"
+import { setSession } from "../../state/auth/authSlice"
+import { setProfile } from "../../state/profile/profileSlice"
 
 type loginErrs = {
   email: boolean,
@@ -11,6 +15,7 @@ type loginErrs = {
 
 const LoginPage = () => {
   const [errs, setErrs] = useState<loginErrs>({email: false, password: false})
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
   const handleLogin = async (e: SyntheticEvent<HTMLFormElement>) => {
@@ -46,7 +51,17 @@ const LoginPage = () => {
       if(authError) throw authError;
       console.log("Logged in successfully: ", authData);
       
+      dispatch(setSession(authData.session))
+
       navigate("/home")
+
+      const {data, error} = await supabase.from('profiles').select().eq("id", authData.user.id);
+
+      if(error) throw error;
+
+      console.log(data);
+
+      dispatch(setProfile(data[0]))
 
     } catch (error) {
       console.error((error as Error).message)

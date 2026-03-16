@@ -1,0 +1,28 @@
+.mainContent{
+    background-color: var(--main-bg);
+    height: 100vh;
+    margin-top: 50px;
+}
+
+.profBanner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.bannerImgCont{
+    background-color: rgb(23,23,23);
+    width: 77%;
+    height: 410px;
+    border-radius: 0px 0px 15px 15px;
+    overflow: hidden;
+    display: flex; 
+}
+
+.bannerImgCont img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}

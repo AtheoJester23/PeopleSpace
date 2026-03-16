@@ -7,6 +7,7 @@ import MainLayouts from './layouts/MainLayouts'
 import { useSelector } from 'react-redux'
 import type { RootState } from './state/store'
 import { useEffect } from 'react'
+import Profile from './pages/Profile/Profile'
 
 function App() {
   const theme = useSelector((state: RootState) => state.theme.mode);
@@ -22,6 +23,7 @@ function App() {
         <Route path='/reg' element={<SigninPage/>}/>
         <Route element={<MainLayouts/>}>
           <Route path='/home' element={<HomePage/>}/>
+          <Route path='/profile/:id' element={<Profile/>}/>
         </Route>
       </Routes>
     </BrowserRouter>
