@@ -1,4 +1,4 @@
-import { ArrowLeft, Bell, MessageCircleMore, Search } from 'lucide-react'
+import { ArrowLeft, Bell, ChevronRight, MessageCircleMore, Search, Settings } from 'lucide-react'
 import styles from './Navbar.module.css'
 import { style } from 'framer-motion/client'
 import { useEffect, useRef, useState } from 'react'
@@ -13,6 +13,11 @@ const Navbar = () => {
   const searchRef = useRef<HTMLInputElement>(null);
   const logoRef = useRef<HTMLImageElement>(null)
   const [hidLogo, setHidLogo] = useState(false)
+  const currentUser = useSelector((state: RootState) => state.user.profile);
+
+  //Profile Dropdown
+  const [openProfDrop, setOpenProfDrop] = useState(false)
+  const profRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -21,6 +26,14 @@ const Navbar = () => {
         !searchRef.current.contains(e.target as Node)
       ){
         setHidLogo(false)
+      }
+
+      if(
+        profRef.current &&
+        !profRef.current.contains(e.target as Node)
+      ){
+        setOpenProfDrop(false);
+        console.log("testing")
       }
     }
 
@@ -63,10 +76,31 @@ const Navbar = () => {
             <Bell size={20}/>
             <p className={styles.hoverIcon}>Notification</p>
           </button>
-          <Link to={`/home`} className={styles.profPic}>
+          <div className={styles.profPic} onClick={() => setOpenProfDrop(prev => !prev)}>
             <p className={styles.tempProf}>A</p>
             <p className={styles.hoverProf}>Profile</p>
-          </Link>
+            {openProfDrop && (
+              <div className={styles.profDropDown} ref={profRef}>
+                <ul>
+                  <li>
+                    <Link to={`/profile/${currentUser!.id}`} className={styles.dropDownOption}>
+                      <div className={styles.dropDownPic}>
+                        <img src="/logo.png" alt="" />
+                      </div>
+                      {currentUser!.username}
+                    </Link>
+                  </li>
+                  <li>
+                    <div className={styles.rightSideIcons}>
+                      <Settings/>
+                    </div>
+                    <p>Settings & privacy</p>
+                    <ChevronRight/>
+                  </li>
+                </ul>
+              </div>
+            )}
+          </div>
         </div>
     </nav>
   )

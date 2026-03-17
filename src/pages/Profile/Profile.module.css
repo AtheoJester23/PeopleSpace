@@ -1,7 +1,7 @@
 .mainContent{
     background-color: var(--main-bg);
-    height: 100vh;
     margin-top: 50px;
+    height: 100vh;
 }
 
 .profBanner{
@@ -25,4 +25,17 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
+}
+
+.profImgCont{
+    width: 150px;
+    height: 150px;
+    border-radius: 90px;
+    overflow: hidden;
+}
+
+.profImgCont img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }

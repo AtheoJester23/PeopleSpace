@@ -41,6 +41,14 @@ const Profile = () => {
             </div>
         )}
 
+        <div>
+            <div>
+                <div className={styles.profImgCont}>
+                    <img src="/logo.png" alt="" />
+                </div>
+            </div>
+        </div>
+
       
     </main>
   )

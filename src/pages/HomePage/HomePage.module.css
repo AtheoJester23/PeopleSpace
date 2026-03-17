@@ -9,4 +9,5 @@
 .mainCont{
     background-color: var(--main-bg);
     height: 100vh;
+    margin-top: 50px;
 }
