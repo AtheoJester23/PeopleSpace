@@ -1,28 +1,23 @@
-import { useNavigate } from "react-router-dom";
-import supabase from "../../config/supabaseClient";
 import styles from './HomePage.module.css'
+import { logout } from "../../services/auth";
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
-    const navigate = useNavigate();
-    
-  const handleTempLogout = async () => {
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
     try {
-        const {error: authError} = await supabase.auth.signOut();
+      await logout()
 
-        if(authError) throw authError;
-
-        console.log("Logged out successfully")
-
-        navigate("/")
+      navigate("/")
     } catch (error) {
-        console.error((error as Error).message)
+      console.log((error as Error).message)
     }
   }
-  
+
   return (
-    <main className={styles.mainCont}>
-      
-      <button onClick={() => handleTempLogout()}>Logout</button>
+    <main className={styles.mainCont}> 
+      <button onClick={handleLogout}>Logout</button>
     </main>
   )
 }

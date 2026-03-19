@@ -3,11 +3,13 @@ import './App.css'
 import LoginPage from './pages/LoginPage/LoginPage'
 import SigninPage from './pages/SigninPage/SigninPage'
 import HomePage from './pages/HomePage/HomePage'
-import MainLayouts from './layouts/MainLayouts'
+import MainLayouts from './layouts/MainLayouts/MainLayouts'
 import { useSelector } from 'react-redux'
 import type { RootState } from './state/store'
 import { useEffect } from 'react'
 import Profile from './pages/Profile/Profile'
+import CheckSession from './layouts/CheckSession/CheckSession'
+import RequireAuth from './layouts/RequireAuth'
 
 function App() {
   const theme = useSelector((state: RootState) => state.theme.mode);
@@ -19,12 +21,20 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<LoginPage/>}/>
-        <Route path='/reg' element={<SigninPage/>}/>
-        <Route element={<MainLayouts/>}>
+        <Route element={<CheckSession/>}>
+          <Route path='/' element={<LoginPage/>}/>
+          <Route path='/reg' element={<SigninPage/>}/>
+        </Route>
+
+        <Route element={<RequireAuth/>}>
           <Route path='/home' element={<HomePage/>}/>
+        </Route>
+
+        <Route element={<MainLayouts/>}>
           <Route path='/profile/:id' element={<Profile/>}/>
         </Route>
+
+        
       </Routes>
     </BrowserRouter>
   )

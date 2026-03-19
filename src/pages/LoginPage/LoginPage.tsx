@@ -1,12 +1,13 @@
-import { useState, type FormEvent, type SyntheticEvent } from "react"
+import { useEffect, useState, type FormEvent, type SyntheticEvent } from "react"
 import { motion } from 'framer-motion'
 import "./LoginPage.css"
 import supabase from "../../config/supabaseClient"
-import { useNavigate } from "react-router-dom"
-import { useDispatch } from "react-redux"
-import type { AppDispatch } from "../../state/store"
+import { replace, useNavigate } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import type { AppDispatch, RootState } from "../../state/store"
 import { setSession } from "../../state/auth/authSlice"
 import { setProfile } from "../../state/profile/profileSlice"
+import { getSession } from "../../services/auth"
 
 type loginErrs = {
   email: boolean,
@@ -16,6 +17,8 @@ type loginErrs = {
 const LoginPage = () => {
   const [errs, setErrs] = useState<loginErrs>({email: false, password: false})
   const dispatch = useDispatch<AppDispatch>();
+  const session = useSelector((state: RootState) => state.auth.session);
+  const profile = useSelector((state: RootState) => state.user.profile);
   const navigate = useNavigate();
 
   const handleLogin = async (e: SyntheticEvent<HTMLFormElement>) => {
@@ -67,6 +70,12 @@ const LoginPage = () => {
       console.error((error as Error).message)
     }
   }
+
+  useEffect(() => {
+    if(session){
+      navigate('/home', {replace: true})
+    }
+  }, [session, navigate])
 
   return (
     <main className="main-content">

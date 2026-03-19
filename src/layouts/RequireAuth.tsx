@@ -5,29 +5,32 @@ import type { AppDispatch, RootState } from "../state/store"
 import { useEffect } from "react"
 import supabase from "../config/supabaseClient"
 import { setSession } from "../state/auth/authSlice"
+import { getSession } from "../services/auth"
+import { setProfile } from "../state/profile/profileSlice"
 
-const MainLayouts = () => {
+const RequireAuth = () => {
   const session = useSelector((state: RootState) => state.auth.session);
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    async function getSession(){
-      try {
-        const {data, error} = await supabase.auth.getSession();
+    const checkSesh = async () => {
+        const res = await getSession();
 
-        if(error) throw error;
+        if(!res){
+            dispatch(setSession(null));
+            dispatch(setProfile(null));
+            return;
+        }
 
-        dispatch(setSession(data.session))
-      } catch (error) {
-        console.log((error as Error).message)
-      }
+        dispatch(setSession(res?.session));
+        dispatch(setProfile(res?.data));
     }
 
-    getSession();
+    checkSesh();
   }, [])
 
   if (session === undefined) {
-    return <div>Loading...</div>;
+    return <div>Loading abcdefg...</div>;
   }
 
   // not logged in
@@ -43,4 +46,4 @@ const MainLayouts = () => {
   )
 }
 
-export default MainLayouts
+export default RequireAuth

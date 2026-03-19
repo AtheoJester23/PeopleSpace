@@ -1,6 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+type initialType = {
+    profile: null | {
+        bio: String,
+        birthday: String,
+        created_at: String,
+        firstname: String,
+        gender: String,
+        id: String,
+        lastname: String,
+        profile_banner: String,
+        updated_at: String,
+        username: String
+    }
+}
+
+const initialState: initialType = {
     profile: null
 }
 
