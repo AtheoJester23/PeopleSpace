@@ -1,16 +1,18 @@
-import { useParams } from 'react-router-dom'
 import styles from './Profile.module.css'
-import { useEffect, useState } from 'react';
-import supabase from '../../config/supabaseClient';
+import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../state/store';
+import { ChevronDown } from 'lucide-react';
 
 const Profile = () => {
     const userProf = useSelector((state: RootState) => state.user.profile);
-    
-    if(userProf){
-        console.log(userProf)
-    }
+    const session = useSelector((state: RootState) => state.auth.session);
+
+    useMemo(() => {
+        if(userProf){
+            console.log(userProf)
+        }
+    }, [userProf])
 
   return (
     <main className={styles.mainContent}>
@@ -20,10 +22,37 @@ const Profile = () => {
             </div>
         </div>
 
-        <div>
-            <div>
-                <div className={styles.profImgCont}>
-                    <img src="/logo.png" alt="" />
+        <div style={{display: "flex", justifyContent: "center", alignItems: "center",}}>
+            <div className={styles.profDeets}>
+                <div style={{display: "flex", justifyContent: "center", alignItems: "center", gap: "20px"}}>
+                    <div className={styles.profImgCont}>
+                        <img src="/logo.png" alt="" />
+                    </div>
+                    
+                    <div>
+                        <h1>{userProf?.username} testing</h1>
+
+                    </div>
+                </div>
+
+                <div>
+                    {true ? (
+                        <>
+                            <button>Add to story</button>
+                            <button>Edit Profile</button>
+                            <button>
+                                <ChevronDown/>
+                            </button>
+                        </>
+                    ):(
+                        <>
+                            <button>Add friend</button>
+                            <button>Message</button>
+                            <button>
+                                <ChevronDown/>
+                            </button>
+                        </>
+                    )}
                 </div>
             </div>
         </div>

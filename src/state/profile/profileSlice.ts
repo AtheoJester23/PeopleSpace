@@ -12,11 +12,13 @@ type initialType = {
         profile_banner: String,
         updated_at: String,
         username: String
-    }
+    },
+    myProf: boolean
 }
 
 const initialState: initialType = {
-    profile: null
+    profile: null,
+    myProf: false
 }
 
 const profileSlice = createSlice({
@@ -25,9 +27,12 @@ const profileSlice = createSlice({
     reducers: {
         setProfile: (state, action) => {
             state.profile = action.payload;
+        },
+        setMyProf: (state, action) => {
+            state.myProf = action.payload;
         }
     }
 })
 
-export const { setProfile } = profileSlice.actions;
+export const { setProfile, setMyProf } = profileSlice.actions;
 export default profileSlice.reducer;

@@ -39,3 +39,13 @@
     height: 100%;
     object-fit: cover;
 }
+
+.profDeets{
+    background-color: green;
+    padding: 25px 50px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 70%;
+    justify-content: space-between;
+}

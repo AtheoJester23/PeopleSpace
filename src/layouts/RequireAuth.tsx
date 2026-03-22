@@ -4,12 +4,13 @@ import { useDispatch, useSelector } from "react-redux"
 import type { AppDispatch, RootState } from "../state/store"
 import { useEffect } from "react"
 import supabase from "../config/supabaseClient"
-import { setSession } from "../state/auth/authSlice"
+import { addUser, setSession } from "../state/auth/authSlice"
 import { getSession } from "../services/auth"
 import { setProfile } from "../state/profile/profileSlice"
 
 const RequireAuth = () => {
   const session = useSelector((state: RootState) => state.auth.session);
+  const mainUser = useSelector((state: RootState) => state.auth.users);
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
@@ -22,8 +23,14 @@ const RequireAuth = () => {
             return;
         }
 
-        dispatch(setSession(res?.session));
         dispatch(setProfile(res?.data));
+
+        dispatch(setSession({
+          userId: res.session.user.id,
+          accesToken: res.session.access_token
+        }))
+
+        dispatch(addUser(res.data));
     }
 
     checkSesh();

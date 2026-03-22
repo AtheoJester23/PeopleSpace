@@ -5,7 +5,7 @@ import supabase from "../../config/supabaseClient"
 import { replace, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import type { AppDispatch, RootState } from "../../state/store"
-import { setSession } from "../../state/auth/authSlice"
+import { addUser, setSession } from "../../state/auth/authSlice"
 import { setProfile } from "../../state/profile/profileSlice"
 import { getSession } from "../../services/auth"
 
@@ -52,20 +52,24 @@ const LoginPage = () => {
       const { data: authData, error: authError } = await supabase.auth.signInWithPassword({email, password});
       
       if(authError) throw authError;
-      console.log("Logged in successfully: ", authData);
+      // console.log("Logged in successfully: ", authData);
       
-      dispatch(setSession(authData.session))
+      dispatch(setSession({
+        userId: authData.user.id,
+        accesToken: authData.session.access_token
+      }))
 
-      navigate("/home")
-
+      
       const {data, error} = await supabase.from('profiles').select().eq("id", authData.user.id);
 
       if(error) throw error;
 
-      console.log(data);
+      // console.log(data[0]);
 
       dispatch(setProfile(data[0]))
-
+      dispatch(addUser(data[0]))
+      
+      navigate("/home")
     } catch (error) {
       console.error((error as Error).message)
     }
