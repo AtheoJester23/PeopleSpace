@@ -1,4 +1,4 @@
-import { ArrowLeft, Bell, ChevronRight, LogOut, Menu, MessageCircleMore, Search, Settings } from 'lucide-react'
+import { ArrowLeft, Bell, ChevronRight, LogOut, Menu, MessageCircleMore, Moon, Search, Settings } from 'lucide-react'
 import styles from './Navbar.module.css'
 import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
@@ -121,11 +121,22 @@ const Navbar = () => {
                           <p>Settings & privacy</p>
                           <ChevronRight/>
                         </li>
-                        <li onClick={() => handleLogout()}>
-                          <div className={styles.rightSideIcons}>
-                            <LogOut/>
+                        <li>
+                          <div className={styles.optName}>
+                            <div className={styles.rightSideIcons}>
+                              <Moon/>
+                            </div>
+                            <p>Display</p>
                           </div>
-                          <p>Logout</p>
+                          <ChevronRight/>
+                        </li>
+                        <li onClick={() => handleLogout()}>
+                          <div className={styles.optName}>
+                            <div className={styles.rightSideIcons}>
+                              <LogOut/>
+                            </div>
+                            <p>Logout</p>
+                          </div>
                         </li>
                       </ul>
                     </div>
