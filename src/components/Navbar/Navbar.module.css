@@ -97,10 +97,6 @@
     z-index: 1000;
 }
 
-.profPic:hover .hoverProf{
-    display: block;
-}
-
 .profDropDown{
     position: absolute;
     background-color: var();
@@ -177,7 +173,12 @@
     color: white;
     padding: 9px 14px;
     border-radius: 20px;
-    background-color: black;
+    background-color: green;
+    cursor: pointer;
+}
+
+.tempProf:hover + .hoverProf{
+    display: block;
 }
 
 .leftSideA{
