@@ -19,10 +19,26 @@
     border-width: 1px;
     border-color: gray;
     padding: 10px;
+    overflow-y: auto;
+    color: var(--theme-text);
+}
+
+.leftBtns{
+    padding: 0px 17px;
+    border-radius: 7px 0px 0px 7px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    overflow-x: hidden;
+    cursor: pointer;
+}
+
+.leftBtns:hover{
+    background-color: var(--hoverBtn);
 }
 
 .mid{
-    flex: 2;
+    flex: 3;
     border-right: solid;
     border-width: 1px;
     border-color: gray;
