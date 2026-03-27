@@ -27,8 +27,15 @@ const HomePage = () => {
 
   return (
     <main className={styles.mainCont}> 
-      <button onClick={handleLogout}>Logout</button>
-      <button onClick={() => testMainProf()}>Check</button>
+      <div className={styles.left}>
+        <button onClick={handleLogout}>Logout</button>
+      </div>
+      <div className={styles.mid}>
+        <p>test</p>
+      </div>
+      <div className={styles.right}>
+        <button onClick={() => testMainProf()}>Check</button>
+      </div>
     </main>
   )
 }

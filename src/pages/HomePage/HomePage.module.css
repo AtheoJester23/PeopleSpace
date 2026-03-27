@@ -10,4 +10,26 @@
     background-color: var(--main-bg);
     height: 100vh;
     margin-top: 50px;
+    display: flex;
+}
+
+.left{
+    flex: 1;
+    border-right: solid;
+    border-width: 1px;
+    border-color: gray;
+    padding: 10px;
+}
+
+.mid{
+    flex: 2;
+    border-right: solid;
+    border-width: 1px;
+    border-color: gray;
+    padding: 20px;
+}
+
+.right{
+    flex: 1;
+    padding: 20px;
 }
