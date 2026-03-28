@@ -53,8 +53,8 @@ const CheckSession = () => {
   if(loading && session === undefined){
     return(
       <div className={styles.wholeScreen}>
-          <p>Loading</p>
-        </div>
+        <p>Loading</p>
+      </div>
     )
   }
 

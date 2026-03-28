@@ -3,7 +3,7 @@ import { logout } from "../../services/auth";
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../state/store';
-import { User, UsersRound } from 'lucide-react';
+import { Image, User, UsersRound, Video } from 'lucide-react';
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -29,7 +29,22 @@ const HomePage = () => {
         </div>
       </section>
       <section className={styles.mid}>
-        <p>test</p>
+        <div className={styles.postNew}>
+          <div className={styles.profDisp}>
+            <User/>
+          </div>
+          <button className={styles.postBtn}>
+            What's on your mind today?
+          </button>
+          <div style={{display: "flex", gap: "5px"}}>
+            <button className={styles.postOpt}>
+              <Video size={30}/>
+            </button>
+            <button className={styles.postOpt}>
+              <Image size={30}/>
+            </button>
+          </div>
+        </div>
       </section>
       <section className={styles.right}>
         <div>
