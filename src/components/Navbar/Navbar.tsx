@@ -1,4 +1,4 @@
-import { ArrowLeft, Bell, ChevronRight, LogOut, Menu, MessageCircleMore, Moon, Search, Settings } from 'lucide-react'
+import { ArrowLeft, Bell, ChevronRight, Home, LogOut, Menu, MessageCircleMore, Moon, Search, Settings, UsersRound } from 'lucide-react'
 import styles from './Navbar.module.css'
 import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
@@ -147,22 +147,39 @@ const Navbar = () => {
           
           {/* Mobile nav */}
           <nav className={styles.mobNav}>
-            <div className={styles.left}>
-              <div className={styles.leftSideA}>
-                <Link to={"/"} style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
-                  <img src="/logo.png" alt="" className={styles.navLogo} ref={logoRef}/>
+            <div className={styles.navBar1}>
+              <div className={styles.left}>
+                <div className={styles.leftSideA}>
+                  <Link to={"/"} style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+                    <img src="/logo.png" alt="" className={styles.navLogo} ref={logoRef}/>
+                  </Link>
+                </div>                  
+              </div>
+      
+              <div className={styles.rMobNav}>
+                <Link to={"/Search"} className={styles.mSearchBtn}>
+                  <Search className={styles.searchIcon2} size={17}/>
                 </Link>
-              </div>                  
-            </div>
-    
-            <div className={styles.rMobNav}>
-              <Link to={"/Search"} className={styles.mSearchBtn}>
-                <Search className={styles.searchIcon} size={17}/>
-              </Link>
-              <div className={styles.mMenu}>
-                <Menu size={16}/>
+                <div className={styles.mMenu}>
+                  <Menu size={16}/>
+                </div>
               </div>
             </div>
+            <div className={styles.navBar2}>
+              <Link to={"/"} className={styles.bar2Btns}>
+                  <Home size={32}/>
+              </Link>
+              <Link to={"/"} className={styles.bar2Btns}>
+                  <UsersRound size={32}/>
+              </Link>
+              <Link to={"/"} className={styles.bar2Btns}>
+                  <MessageCircleMore size={32}/>
+              </Link>
+              <Link to={"/"} className={styles.bar2Btns}>
+                  <Bell size={32}/>
+              </Link>
+            </div>
+            
         </nav>
         </>
       ):(

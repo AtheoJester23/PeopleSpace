@@ -254,6 +254,30 @@
     display: none;
 }
 
+.navBar1{
+    display: none;
+    padding: 5px 0px;
+}
+
+.navBar2{
+    /* background-color: green; */
+    width: 100%;
+    display: flex;
+    /* padding: 5px; */
+    /* display: none; */
+    border-top: 1px solid rgb(223, 223, 223);
+}
+
+.bar2Btns{
+    /* background-color: orange; */
+    flex: 1;
+    display: flex;
+    padding: 12px 0px;
+    justify-content: center;
+    color: var(--theme-text);
+
+}
+
 @media (max-width: 412px) {
     .mainNav{
         display: none;
@@ -261,8 +285,9 @@
 
     .mobNav{
         background-color: var(--nav-bg);
-        height: 50px;
+        /* height: 100px; */
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
         align-items: center;
         /* padding: 0px 15px; */
@@ -290,8 +315,12 @@
         position: relative;
         background-color: rgb(242, 244, 247);
         width: 35px;
-        padding: 0px;
+        padding: 10px 0px;
         border-radius: 20px;
+    }
+
+    .searchIcon2{
+        color: rgb(116, 116, 116);
     }
 
     .searchIcon{
@@ -301,11 +330,18 @@
     
     .mMenu{
         background-color: rgb(242, 244, 247);
+        padding: 10px 0px;
         border-radius: 20px;
-        height: 70%;
         width: 35px;
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .navBar1{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
     }
 }
