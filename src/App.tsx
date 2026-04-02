@@ -10,6 +10,7 @@ import { useEffect } from 'react'
 import Profile from './pages/Profile/Profile'
 import CheckSession from './layouts/CheckSession/CheckSession'
 import RequireAuth from './layouts/RequireAuth'
+import PageNotFound from './components/PageNotFound/PageNotFound'
 
 function App() {
   const theme = useSelector((state: RootState) => state.theme.mode);
@@ -33,6 +34,8 @@ function App() {
         <Route element={<MainLayouts/>}>
           <Route path='/profile/:id' element={<Profile/>}/>
         </Route>
+
+        <Route path='*' element={<PageNotFound/>}/>
 
         
       </Routes>

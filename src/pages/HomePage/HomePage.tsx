@@ -37,7 +37,7 @@ const HomePage = () => {
             What's on your mind today?
           </button>
           <div style={{display: "flex", gap: "5px"}}>
-            <button className={styles.postOpt}>
+            <button className={styles.postOptVid}>
               <Video size={30}/>
             </button>
             <button className={styles.postOpt}>

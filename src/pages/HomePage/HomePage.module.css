@@ -86,7 +86,20 @@
     color: var(--theme-text);
 }
 
-.postOpt:hover{
+.postOptVid{
+    border: none;
+    height: 100%;
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    background-color: var(--nav-bg);
+    cursor: pointer;
+    color: var(--theme-text);
+}
+
+.postOpt:hover .postOptVid:hover{
     background-color: var(--hoverBtn);
 }
 
@@ -113,5 +126,8 @@
     }
     .mainCont{
         margin-top: 110px;
+    }
+    .postOptVid{
+        display: none;
     }
 }
