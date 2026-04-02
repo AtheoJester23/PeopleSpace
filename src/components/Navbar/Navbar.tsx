@@ -160,9 +160,9 @@ const Navbar = () => {
                 <Link to={"/Search"} className={styles.mSearchBtn}>
                   <Search className={styles.searchIcon2} size={17}/>
                 </Link>
-                <div className={styles.mMenu}>
+                <Link to={"/menu"} className={styles.mMenu}>
                   <Menu size={16}/>
-                </div>
+                </Link>
               </div>
             </div>
             <div className={styles.navBar2}>

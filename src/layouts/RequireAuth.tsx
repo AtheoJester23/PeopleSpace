@@ -1,4 +1,4 @@
-import { Navigate, Outlet } from "react-router-dom"
+import { Navigate, Outlet, useLocation } from "react-router-dom"
 import Navbar from "../components/Navbar/Navbar"
 import { useDispatch, useSelector } from "react-redux"
 import type { AppDispatch, RootState } from "../state/store"
@@ -12,6 +12,7 @@ const RequireAuth = () => {
   const session = useSelector((state: RootState) => state.auth.session);
   const mainUser = useSelector((state: RootState) => state.auth.users);
   const dispatch = useDispatch<AppDispatch>();
+  const test = useLocation();
 
   useEffect(() => {
     const checkSesh = async () => {
@@ -47,7 +48,7 @@ const RequireAuth = () => {
 
   return (
     <>
-        <Navbar/>
+        {test.pathname !== '/menu' && <Navbar/>}
         <Outlet/> 
     </>
   )

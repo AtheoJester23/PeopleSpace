@@ -1,0 +1,20 @@
+.mainCont{
+    background-color: var(--main-bg);
+    height: 2000px;  
+    padding: 20px;
+}
+
+.mainCont h1{
+     margin: 0;
+     color: var(--theme-text);
+}
+
+.fixedContainerTop{
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
+}
