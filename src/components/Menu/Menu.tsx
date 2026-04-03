@@ -6,11 +6,11 @@ const Menu = () => {
   return (
     <main className={styles.mainCont}>
         <div className={styles.fixedContainerTop}>
-            <Link to={"/"}>
+            <Link to={"/"} className={styles.fixedContBtns}>
                 <ChevronLeft/>
             </Link>
             <h1>Menu</h1>
-            <Link to={"/search"}>
+            <Link to={"/search"} className={styles.fixedContBtns}>
                 <Search/>
             </Link>
         </div>

@@ -12,6 +12,7 @@ import CheckSession from './layouts/CheckSession/CheckSession'
 import RequireAuth from './layouts/RequireAuth'
 import PageNotFound from './components/PageNotFound/PageNotFound'
 import Menu from './components/Menu/Menu'
+import SearchPage from './components/Search/SearchPage'
 
 function App() {
   const theme = useSelector((state: RootState) => state.theme.mode);
@@ -31,6 +32,7 @@ function App() {
         <Route element={<RequireAuth/>}>
           <Route path='/home' element={<HomePage/>}/>
           <Route path='/menu' element={<Menu/>}/>
+          <Route path='/search' element={<SearchPage/>}/>
         </Route>
 
         <Route element={<MainLayouts/>}>

@@ -17,4 +17,9 @@
     left: 0;
     right: 0;
     padding: 15px;
+    align-items: center;
+}
+
+.fixedContBtns{
+    color: var(--theme-text);
 }
