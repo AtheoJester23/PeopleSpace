@@ -4,3 +4,30 @@
     align-items: center;
     height: 100vh;
 }
+
+.mobNav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: green;
+    padding: 0px 10px;
+}
+
+.mobNav .userName{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.mobNavRight{
+    display: flex;
+    gap: 10px;
+    color: var(--theme-text);
+}
+
+.mobNavIcons{
+    color: var(--theme-text);
+}

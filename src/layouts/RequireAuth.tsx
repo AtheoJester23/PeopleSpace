@@ -46,9 +46,11 @@ const RequireAuth = () => {
     return <Navigate to="/" replace />;
   }
 
+  // console.log(session.id);
+
   return (
     <>
-        {test.pathname !== '/menu' && test.pathname !== '/Search' && <Navbar/>}
+        {test.pathname !== '/menu' && test.pathname !== '/Search' && test.pathname !== '/profile/:id' && <Navbar/>}
         <Outlet/> 
     </>
   )

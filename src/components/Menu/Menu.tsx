@@ -1,8 +1,18 @@
 import { Link } from 'react-router-dom'
 import styles from './Menu.module.css'
 import { ChevronLeft, Search } from 'lucide-react'
+import { useSelector } from 'react-redux'
+import type { RootState } from '../../state/store'
+import { useState } from 'react'
+import type { User } from '../../state/auth/authSlice'
 
 const Menu = () => {
+    const session = useSelector((state: RootState) => state.auth.session);
+    const users = useSelector((state: RootState) => state.auth.users);
+    const [currentUser, setCurrentUser] = useState<User | null>(users.byId[session!.userId] || null);
+
+    console.log(users.byId[session!.userId]);
+
   return (
     <main className={styles.mainCont}>
         <div className={styles.fixedContainerTop}>
@@ -14,6 +24,9 @@ const Menu = () => {
                 <Search/>
             </Link>
         </div>
+        <Link to={`/profile/${session?.userId}`} className={styles.viewProfBtn}>
+            <p>{currentUser?.username}</p>
+        </Link>
     </main>
   )
 }

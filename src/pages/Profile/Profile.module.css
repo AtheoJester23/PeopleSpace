@@ -49,3 +49,17 @@
     width: 70%;
     justify-content: space-between;
 }
+
+@media (max-width: 412px){
+    .bannerImgCont{
+        height: 200px;
+    }
+
+    .mainContent{
+        margin-top: 52px;
+    }
+
+    .profDeets{
+        display: none;
+    }
+}
