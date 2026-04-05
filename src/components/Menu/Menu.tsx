@@ -20,12 +20,18 @@ const Menu = () => {
                 <ChevronLeft/>
             </Link>
             <h1>Menu</h1>
-            <Link to={"/search"} className={styles.fixedContBtns}>
+            <Link to={"/Search"} className={styles.fixedContBtns}>
                 <Search/>
             </Link>
         </div>
         <Link to={`/profile/${session?.userId}`} className={styles.viewProfBtn}>
-            <p>{currentUser?.username}</p>
+            <div className={styles.profPic}>
+                A
+            </div>
+            <div className={styles.viewProfText}>
+                <p>{currentUser?.username}</p>
+                <small>View your profile</small>
+            </div>
         </Link>
     </main>
   )

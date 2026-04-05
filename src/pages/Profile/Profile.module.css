@@ -41,7 +41,6 @@
 }
 
 .profDeets{
-    background-color: green;
     padding: 25px 50px;
     display: flex;
     align-items: center;
@@ -59,7 +58,24 @@
         margin-top: 52px;
     }
 
+    .profImgCont{
+        height: 50px;
+        width: 50px;
+    }
+
     .profDeets{
+        /* display: none; */
+        padding: 0px;
+        width: 100%;
+    }
+
+    .bannerImgCont{
+        width: 100%;
+        height: 130px;
+        border-radius: 0px;
+    }
+
+    .profOption{
         display: none;
     }
 }

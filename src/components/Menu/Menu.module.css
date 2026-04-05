@@ -1,11 +1,13 @@
 .mainCont{
     background-color: var(--main-bg);
     height: 2000px;  
-    padding: 20px;
+    padding: 5px 15px;
+    margin-top: 58px;
 }
 
 .mainCont h1{
      margin: 0;
+     font-size: 23px;
      color: var(--theme-text);
 }
 
@@ -18,8 +20,44 @@
     right: 0;
     padding: 15px;
     align-items: center;
+    background-color: var(--main-bg);
 }
 
 .fixedContBtns{
     color: var(--theme-text);
+}
+
+.viewProfBtn{
+    background-color: var(--nav-bg);
+    padding: 10px 12px;
+    color: var(--theme-text);
+    text-decoration: none;
+    display: flex;
+    border-radius: 5px;
+    gap: 10px;
+}
+
+.viewProfText{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.profPic{
+    background-color: green;
+    color: var(--theme-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 20px;
+}
+
+.viewProfBtn p{
+    margin: 0px;
+    color: var(--theme-text);
+}
+
+.viewProfBtn{
+    color: gray;
 }

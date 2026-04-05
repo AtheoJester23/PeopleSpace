@@ -13,8 +13,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: green;
     padding: 0px 10px;
+    height: 52px;
+    background-color: var(--main-bg);
+    color: var(--theme-text);
 }
 
 .mobNav .userName{
