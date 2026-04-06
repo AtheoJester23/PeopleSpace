@@ -1,6 +1,6 @@
 .mainCont{
     background-color: var(--main-bg);
-    height: 2000px;  
+    height: calc(100vh - 7vh);
     padding: 5px 15px;
     margin-top: 58px;
 }
@@ -60,4 +60,63 @@
 
 .viewProfBtn{
     color: gray;
+}
+
+.otherMenuOptions{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 15px 0px;
+}
+
+.optBtn{
+    background-color: var(--nav-bg);
+    padding: 10px;
+    border-radius: 5px;
+    color: var(--theme-text);
+}
+
+.optBtn p{
+    margin: 0;
+}
+
+hr{
+    border: none;
+    height: 1px;
+    background-color: gray;
+}
+
+.settingsOptList{
+    list-style-type: none;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.settingsOptList li{
+    background-color: var(--nav-bg);
+    padding: 15px 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--theme-text);
+    border-radius: 5px;
+    justify-content: space-between;
+}
+
+.settingsOptList li p{
+    margin: 0px;
+}
+
+.settingsOptList li div{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toggleBtn{
+    width: 45px;
+    border-radius: 20px;
+    display: flex;
 }

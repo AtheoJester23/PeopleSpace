@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
 import styles from './Menu.module.css'
-import { ChevronLeft, Search } from 'lucide-react'
-import { useSelector } from 'react-redux'
-import type { RootState } from '../../state/store'
+import { ChevronLeft, Circle, LogOut, MessageCircleMore, Moon, Search, Settings, UsersRound } from 'lucide-react'
+import { useDispatch, useSelector } from 'react-redux'
+import type { AppDispatch, RootState } from '../../state/store'
 import { useState } from 'react'
 import type { User } from '../../state/auth/authSlice'
+import { setTheme } from '../../state/theme/themeSlice'
 
 const Menu = () => {
     const session = useSelector((state: RootState) => state.auth.session);
@@ -13,6 +14,13 @@ const Menu = () => {
 
     console.log(users.byId[session!.userId]);
 
+    const theme = useSelector((state: RootState) => state.theme.mode);
+    const dispatch = useDispatch<AppDispatch>()
+    console.log(theme);
+
+    const handleDarkMode = () => {
+        dispatch(setTheme(theme === 'light' ? 'dark' : 'light'))
+    }
   return (
     <main className={styles.mainCont}>
         <div className={styles.fixedContainerTop}>
@@ -33,6 +41,49 @@ const Menu = () => {
                 <small>View your profile</small>
             </div>
         </Link>
+        <div className={styles.otherMenuOptions}>
+            <div className={styles.optBtn}>
+                <MessageCircleMore/>
+                <p>Messages</p>
+            </div>
+            <div className={styles.optBtn}>
+                <UsersRound/>
+                <p>Friends</p>
+            </div>
+        </div>
+
+        <hr />
+
+        <ul className={styles.settingsOptList}>
+            <li>
+                <div>
+                    <Settings/>
+                    <p>
+                        Settings
+                    </p>
+                </div>
+            </li>
+            <li onClick={() => handleDarkMode()}>
+                <div>
+                    <Moon/>
+                    <p>
+                        Dark mode
+                    </p>
+                </div>
+
+                <div className={styles.toggleBtn} style={{backgroundColor: theme === "light" ? "gray" : "#2845D6", justifyContent: theme !== 'light' ? 'right' : 'left'}}>
+                    <Circle fill={theme === 'light' ? 'rgb(80,80,80)' : '#0D1A63'} strokeOpacity={0}/>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <LogOut/>
+                    <p>
+                        Logout
+                    </p>
+                </div>
+            </li>
+        </ul>
     </main>
   )
 }
