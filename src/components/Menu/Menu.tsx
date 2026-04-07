@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import styles from './Menu.module.css'
 import { ChevronLeft, Circle, LogOut, MessageCircleMore, Moon, Search, Settings, UsersRound } from 'lucide-react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -6,6 +6,7 @@ import type { AppDispatch, RootState } from '../../state/store'
 import { useState } from 'react'
 import type { User } from '../../state/auth/authSlice'
 import { setTheme } from '../../state/theme/themeSlice'
+import { logout } from '../../services/auth'
 
 const Menu = () => {
     const session = useSelector((state: RootState) => state.auth.session);
@@ -16,11 +17,16 @@ const Menu = () => {
 
     const theme = useSelector((state: RootState) => state.theme.mode);
     const dispatch = useDispatch<AppDispatch>()
-    console.log(theme);
+    const navigate = useNavigate();
 
     const handleDarkMode = () => {
         dispatch(setTheme(theme === 'light' ? 'dark' : 'light'))
     }
+
+    const handleLogout = () => {
+        logout();
+        navigate("/");
+      }
   return (
     <main className={styles.mainCont}>
         <div className={styles.fixedContainerTop}>
@@ -75,7 +81,7 @@ const Menu = () => {
                     <Circle fill={theme === 'light' ? 'rgb(80,80,80)' : '#0D1A63'} strokeOpacity={0}/>
                 </div>
             </li>
-            <li>
+            <li onClick={() => handleLogout()}>
                 <div>
                     <LogOut/>
                     <p>
