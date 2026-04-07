@@ -60,8 +60,27 @@
     gap: 15px;
 }
 
+.inpCont{
+    display: flex;
+    gap: 7px;
+    position: relative;
+    flex-direction: column;
+}
+
+small{
+    display: block;
+}
+
+.eyecon{
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
 .loginPageForm input{
-    padding: 10px;
+    padding: 10px 10px 20px 20px;
     height: 40px;
     border-radius: 15px;
     border: solid;
@@ -157,7 +176,7 @@
         
     .loginPageForm input{
         font-size: 16px;
-        padding: 5px 15px;
+        padding: 5px 40px 5px 15px;
         border-radius: 7px;
     }
 }

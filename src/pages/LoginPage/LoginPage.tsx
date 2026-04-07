@@ -6,6 +6,7 @@ import type { AppDispatch, RootState } from "../../state/store"
 import { addUser, setSession } from "../../state/auth/authSlice"
 import { setProfile } from "../../state/profile/profileSlice"
 import styles from './LoginPage.module.css'
+import { Eye, EyeClosed } from "lucide-react"
 
 type loginErrs = {
   email: boolean,
@@ -16,8 +17,9 @@ const LoginPage = () => {
   const [errs, setErrs] = useState<loginErrs>({email: false, password: false})
   const dispatch = useDispatch<AppDispatch>();
   const session = useSelector((state: RootState) => state.auth.session);
-  const profile = useSelector((state: RootState) => state.user.profile);
   const navigate = useNavigate();
+  const [showPass, setShowPass] = useState(false);
+
 
   const handleLogin = async (e: SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -92,18 +94,22 @@ const LoginPage = () => {
                 <h1>Log into PeopleSpace</h1>
                 <div className={styles.loginThings}>
                   <fieldset className={styles.formInputs}>
-                    <div style={{display: "flex", flexDirection: "column", gap: 7}}>
+                    <div className={styles.inpCont}>
                       <input onChange={() => setErrs(prev => ({...prev, email: false}))} type="text" name="email" placeholder="Email"/>
                       {errs.email && (
                         <small style={{color: "red"}}>The email you entered isn't connected to an account.</small>
                       )}
                     </div>
-                    <div style={{display: "flex", flexDirection: "column", gap: 7}}>
-                      <input onChange={() => setErrs(prev => ({...prev, password: false}))} type="text" name="password" placeholder="Password"/>
+                    <div className={styles.inpCont}>
+                      <input onChange={() => setErrs(prev => ({...prev, password: false}))} type={showPass ? 'text' : 'password'} name="password" placeholder="Password"/>
                       {errs.password && (
                         <small style={{color: "red"}}>The password you entered is incorrect.</small>
                       )}
-                      
+                      {showPass ? (
+                        <Eye className={styles.eyecon} onClick={() => setShowPass(false)}/>
+                      ):(
+                        <EyeClosed className={styles.eyecon} onClick={() => setShowPass(true)}/>
+                      )}
                     </div>
                   </fieldset>
                   <div className={styles.formBtns}>
