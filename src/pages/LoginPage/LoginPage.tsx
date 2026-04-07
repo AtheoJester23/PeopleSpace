@@ -1,13 +1,11 @@
 import { useEffect, useState, type FormEvent, type SyntheticEvent } from "react"
-import { motion } from 'framer-motion'
-import "./LoginPage.css"
 import supabase from "../../config/supabaseClient"
 import { replace, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import type { AppDispatch, RootState } from "../../state/store"
 import { addUser, setSession } from "../../state/auth/authSlice"
 import { setProfile } from "../../state/profile/profileSlice"
-import { getSession } from "../../services/auth"
+import styles from './LoginPage.module.css'
 
 type loginErrs = {
   email: boolean,
@@ -82,18 +80,18 @@ const LoginPage = () => {
   }, [session, navigate])
 
   return (
-    <main className="main-content">
-        <div className="pageDesign">
-          <img src="/logo.png" className="logo"/>
-          <img src="3375888.jpg" className="artDesign"/>
+    <main className={styles.mainContent}>
+        <div className={styles.pageDesign}>
+          <img src="/logo.png" className={styles.logo}/>
+          <img src="3375888.jpg" className={styles.artDesign}/>
           <a href="http://www.freepik.com" style={{textDecoration: "none", color: "black", fontSize: "10px"}}>Designed by pikisuperstar / Freepik</a>
           <h1>Check with your <span style={{color: "#075B5E"}}>People</span>!</h1>
         </div>
-        <section className="formSection">
-            <form onSubmit={(e) => handleLogin(e)} className="loginPageForm">
+        <section className={styles.formSection}>
+            <form onSubmit={(e) => handleLogin(e)} className={styles.loginPageForm}>
                 <h1>Log into PeopleSpace</h1>
-                <div className="loginThings">
-                  <fieldset className="formInputs">
+                <div className={styles.loginThings}>
+                  <fieldset className={styles.formInputs}>
                     <div style={{display: "flex", flexDirection: "column", gap: 7}}>
                       <input onChange={() => setErrs(prev => ({...prev, email: false}))} type="text" name="email" placeholder="Email"/>
                       {errs.email && (
@@ -108,10 +106,10 @@ const LoginPage = () => {
                       
                     </div>
                   </fieldset>
-                  <div className="formBtns">
-                    <button className="logInbtn">Log in</button>
-                    <a href="/" className="frgtbtn">Forgot Password?</a>
-                    <a href="/reg" className="signUpBtn">Create new account</a>
+                  <div className={styles.formBtns}>
+                    <button className={styles.logInbtn}>Log in</button>
+                    <a href="/" className={styles.frgtbtn}>Forgot Password?</a>
+                    <a href="/reg" className={styles.signUpBtn}>Create new account</a>
                   </div>
                 </div>
 
