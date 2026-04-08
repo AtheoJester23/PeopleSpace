@@ -71,7 +71,12 @@ const LoginPage = () => {
       
       navigate("/home")
     } catch (error) {
-      console.error((error as Error).message)
+      console.error((error as Error).message);
+      if((error as Error).message.includes("Invalid login credentials")){
+        setErrs({email: false, password: true})
+      } else if((error as Error).message.includes("Invalid password")){
+        setErrs({email: false, password: true})
+      }
     }
   }
 
