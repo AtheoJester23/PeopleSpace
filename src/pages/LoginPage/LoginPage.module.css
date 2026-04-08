@@ -3,6 +3,7 @@
     width: 100%;
     display: flex;
     flex-direction: row;
+    overflow-x: hidden;
 }
 
 .logo{
@@ -80,7 +81,7 @@ small{
 }
 
 .loginPageForm input{
-    padding: 10px 10px 20px 20px;
+    padding: 10px 10px 10px 20px;
     height: 40px;
     border-radius: 15px;
     border: solid;
