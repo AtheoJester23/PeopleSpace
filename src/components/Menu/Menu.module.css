@@ -69,11 +69,16 @@
     padding: 15px 0px;
 }
 
+.uiLabels{
+    display: block;
+}
+
 .optBtn{
     background-color: var(--nav-bg);
     padding: 10px;
     border-radius: 5px;
     color: var(--theme-text);
+    text-decoration: none;
 }
 
 .optBtn p{

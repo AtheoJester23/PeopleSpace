@@ -41,8 +41,8 @@ const Menu = () => {
             </nav>
         </header>
 
-        <Link to={`/profile/${session?.userId}`} className={styles.viewProfBtn}>
-            <div className={styles.profPic}>
+        <Link to={`/profile/${session?.userId}`} className={styles.viewProfBtn} aria-label='View your profile'>
+            <div className={styles.profPic} aria-hidden="true">
                 A
             </div>
             <div className={styles.viewProfText}>
@@ -50,16 +50,17 @@ const Menu = () => {
                 <small>View your profile</small>
             </div>
         </Link>
-        <div className={styles.otherMenuOptions}>
-            <div className={styles.optBtn}>
-                <MessageCircleMore/>
-                <p>Messages</p>
-            </div>
-            <div className={styles.optBtn}>
-                <UsersRound/>
-                <p>Friends</p>
-            </div>
-        </div>
+
+        <nav className={styles.otherMenuOptions} aria-label='Menu options'>
+            <Link to={"/messages"} className={styles.optBtn}>
+                <MessageCircleMore aria-hidden="true"/>
+                <span className={styles.uiLabels}>Messages</span>
+            </Link>
+            <Link to={'/friends'} className={styles.optBtn}>
+                <UsersRound aria-hidden="true"/>
+                <span className={styles.uiLabels}>Friends</span>
+            </Link>
+        </nav>
 
         <hr />
 
@@ -67,27 +68,27 @@ const Menu = () => {
             <li>
                 <Link to={'/settings'} className={styles.Link}>
                     <Settings aria-hidden="true"/>
-                    <p>
+                    <span className={styles.uiLabels}>
                         Settings
-                    </p>
+                    </span>
                 </Link>
             </li>
-            <li onClick={() => handleDarkMode()}>
-                <button type='button' role='switch' aria-label='Toggle dark mode' aria-checked={theme !== 'light'}>
+            <li>
+                <button onClick={() => handleDarkMode()} type='button' role='switch' aria-checked={theme !== 'light'}>
                     <div>
-                        <Moon/>
-                        <p>
+                        <Moon aria-hidden="true"/>
+                        <span className={styles.uiLabels}>
                             Dark mode
-                        </p>
+                        </span>
                     </div>
 
-                    <div className={styles.toggleBtn} style={{backgroundColor: theme === "light" ? "gray" : "#2845D6", justifyContent: theme !== 'light' ? 'right' : 'left'}}>
-                        <Circle fill={theme === 'light' ? 'rgb(80,80,80)' : '#0D1A63'} strokeOpacity={0}/>
+                    <div className={styles.toggleBtn} style={{backgroundColor: theme === "light" ? "gray" : "#2845D6", justifyContent: theme !== 'light' ? 'flex-end' : 'flex-start'}}>
+                        <Circle aria-hidden="true" fill={theme === 'light' ? 'rgb(80,80,80)' : '#0D1A63'} strokeOpacity={0}/>
                     </div>
                 </button>
             </li>
-            <li onClick={() => handleLogout()}>
-                <button type='button'>
+            <li>
+                <button type='button' onClick={() => handleLogout()}>
                     <div>
                         <LogOut aria-hidden="true"/>
                         <p>
