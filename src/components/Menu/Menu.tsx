@@ -11,7 +11,7 @@ import { logout } from '../../services/auth'
 const Menu = () => {
     const session = useSelector((state: RootState) => state.auth.session);
     const users = useSelector((state: RootState) => state.auth.users);
-    const [currentUser, setCurrentUser] = useState<User | null>(users.byId[session!.userId] || null);
+    const [currentUser, _] = useState<User | null>(users.byId[session!.userId] || null);
 
     console.log(users.byId[session!.userId]);
 

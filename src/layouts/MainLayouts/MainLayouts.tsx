@@ -5,7 +5,6 @@ import type { AppDispatch, RootState } from "../../state/store"
 import { useEffect, useState } from "react"
 import { addUser, setSession, type User } from "../../state/auth/authSlice"
 import { getSession } from "../../services/auth"
-import { setMyProf, setProfile } from "../../state/profile/profileSlice"
 import styles from './Mainlayouts.module.css'
 import supabase from "../../config/supabaseClient"
 import { ChevronLeft, Ellipsis, Pencil, Search } from "lucide-react"
@@ -19,7 +18,6 @@ const MainLayouts = () => {
   const loc = useLocation();
 
   const [width, setWidth] = useState<number>(window.innerWidth);
-  const users = useSelector((state: RootState) => state.auth.users);
   const [currentUser, setCurrentUser] = useState<User | null>(null);
 
   useEffect(() => {
@@ -46,7 +44,7 @@ const MainLayouts = () => {
             return;
         }
 
-        const {data, error} = await supabase.from('profiles').select().eq('id', id);
+        const { error} = await supabase.from('profiles').select().eq('id', id);
 
         if(error) throw error
 

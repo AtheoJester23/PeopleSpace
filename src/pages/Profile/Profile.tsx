@@ -1,14 +1,11 @@
 import styles from './Profile.module.css'
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../state/store';
 import { ChevronDown } from 'lucide-react';
-import type { User } from '../../state/auth/authSlice';
 
 const Profile = () => {
     const userProf = useSelector((state: RootState) => state.user.profile);
-    const session = useSelector((state: RootState) => state.auth.session);
-    const [currentUser, setCurrentUser] = useState<User>()
 
     useMemo(() => {
         if(userProf){

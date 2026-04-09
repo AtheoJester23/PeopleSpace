@@ -1,6 +1,6 @@
-import { useEffect, useState, type FormEvent, type SyntheticEvent } from "react"
+import { useEffect, useState, type SyntheticEvent } from "react"
 import supabase from "../../config/supabaseClient"
-import { replace, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import type { AppDispatch, RootState } from "../../state/store"
 import { addUser, setSession } from "../../state/auth/authSlice"
@@ -38,9 +38,6 @@ const LoginPage = () => {
       return;
     }
 
-    const passRegex = /^[^\p{Emoji}]*$/u
-    const validPass = passRegex.test(password);
-
     if(!password || password.length < 5 ){
       setErrs(prev => ({...prev, password: true}));
       return;
@@ -73,8 +70,6 @@ const LoginPage = () => {
     } catch (error) {
       console.error((error as Error).message);
       if((error as Error).message.includes("Invalid login credentials")){
-        setErrs({email: false, password: true})
-      } else if((error as Error).message.includes("Invalid password")){
         setErrs({email: false, password: true})
       }
     }

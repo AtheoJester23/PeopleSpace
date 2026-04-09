@@ -1,21 +1,7 @@
 import styles from './HomePage.module.css'
-import { logout } from "../../services/auth";
-import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import type { RootState } from '../../state/store';
 import { Image, User, UsersRound, Video } from 'lucide-react';
 
 const HomePage = () => {
-  const navigate = useNavigate();
-  const users = useSelector((state: RootState) => state.auth.users);
-  const session = useSelector((state: RootState) => state.auth.session);
-
-  const testMainProf = () => {
-    if(session){
-      console.log(users.byId[session?.userId]);
-    }
-  }
-
   return (
     <main className={styles.mainCont}> 
       <section className={styles.left}>
