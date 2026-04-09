@@ -29,15 +29,17 @@ const Menu = () => {
       }
   return (
     <main className={styles.mainCont}>
-        <div className={styles.fixedContainerTop}>
-            <Link to={"/"} className={styles.fixedContBtns}>
-                <ChevronLeft/>
-            </Link>
-            <h1>Menu</h1>
-            <Link to={"/Search"} className={styles.fixedContBtns}>
-                <Search/>
-            </Link>
-        </div>
+        <header className={styles.fixedContainerTop}>
+            <nav aria-label='Menu navigation' style={{display: "flex", justifyContent: "space-between", width: '100%'}}>
+                <Link to={"/"} className={styles.fixedContBtns} aria-label='Go back'>
+                    <ChevronLeft aria-hidden="true"/>
+                </Link>
+                <h1>Menu</h1>
+                <Link to={"/Search"} className={styles.fixedContBtns} aria-label='Search'>
+                    <Search aria-hidden="true"/>
+                </Link>
+            </nav>
+        </header>
 
         <Link to={`/profile/${session?.userId}`} className={styles.viewProfBtn}>
             <div className={styles.profPic}>
