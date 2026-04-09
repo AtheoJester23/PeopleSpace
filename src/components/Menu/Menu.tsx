@@ -38,6 +38,7 @@ const Menu = () => {
                 <Search/>
             </Link>
         </div>
+
         <Link to={`/profile/${session?.userId}`} className={styles.viewProfBtn}>
             <div className={styles.profPic}>
                 A
@@ -63,31 +64,35 @@ const Menu = () => {
         <ul className={styles.settingsOptList}>
             <li>
                 <Link to={'/settings'} className={styles.Link}>
-                    <Settings/>
+                    <Settings aria-hidden="true"/>
                     <p>
                         Settings
                     </p>
                 </Link>
             </li>
             <li onClick={() => handleDarkMode()}>
-                <div>
-                    <Moon/>
-                    <p>
-                        Dark mode
-                    </p>
-                </div>
+                <button type='button' role='switch' aria-label='Toggle dark mode' aria-checked={theme !== 'light'}>
+                    <div>
+                        <Moon/>
+                        <p>
+                            Dark mode
+                        </p>
+                    </div>
 
-                <div className={styles.toggleBtn} style={{backgroundColor: theme === "light" ? "gray" : "#2845D6", justifyContent: theme !== 'light' ? 'right' : 'left'}}>
-                    <Circle fill={theme === 'light' ? 'rgb(80,80,80)' : '#0D1A63'} strokeOpacity={0}/>
-                </div>
+                    <div className={styles.toggleBtn} style={{backgroundColor: theme === "light" ? "gray" : "#2845D6", justifyContent: theme !== 'light' ? 'right' : 'left'}}>
+                        <Circle fill={theme === 'light' ? 'rgb(80,80,80)' : '#0D1A63'} strokeOpacity={0}/>
+                    </div>
+                </button>
             </li>
             <li onClick={() => handleLogout()}>
-                <div>
-                    <LogOut/>
-                    <p>
-                        Logout
-                    </p>
-                </div>
+                <button type='button'>
+                    <div>
+                        <LogOut aria-hidden="true"/>
+                        <p>
+                            Logout
+                        </p>
+                    </div>
+                </button>
             </li>
         </ul>
     </main>

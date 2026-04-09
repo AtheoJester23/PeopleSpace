@@ -105,6 +105,17 @@ hr{
     justify-content: space-between;
 }
 
+.settingsOptList button{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0px;
+    background-color: var(--nav-bg);
+    color: var(--theme-text);
+    border: none;
+    font-size: 16px;
+}
+
 .settingsOptList li p{
     margin: 0px;
 }
