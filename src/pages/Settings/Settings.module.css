@@ -1,6 +1,6 @@
 .mainCont{
     height: 200vh;
-    background-color: var(--main-bg)
+    background-color: var(--nav-bg)
 }
 
 .fixedContTop{
@@ -10,8 +10,34 @@
     background-color: var(--nav-bg);
     color: var(--theme-text);
     padding: 0px 15px;
+    box-shadow: var(--shadowBox);
 }
 
 .icon{
     color: var(--theme-text);
+}
+
+.title{
+    margin: 0px;
+    font-size: 16px;
+    color: var(--theme-text);
+}
+
+.settingsSec{
+    display: flex;
+    padding: 5px 15px;
+    flex-direction: column;
+}
+
+.settingsSec div{
+    padding: 0px 10px;
+}
+
+.passNSec{
+    color: var(--theme-text);
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
 }

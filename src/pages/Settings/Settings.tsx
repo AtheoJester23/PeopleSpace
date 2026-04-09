@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styles from './Settings.module.css'
-import { ArrowLeft, Search } from 'lucide-react'
+import { ArrowLeft, HatGlasses, Search, Shield } from 'lucide-react'
 
 const Settings = () => {
   return (
@@ -16,6 +16,31 @@ const Settings = () => {
                 <Search/>
             </div>
         </div>
+
+        <div style={{marginTop: "10px"}}>
+            <section className={styles.settingsSec}>
+                <h1 className={styles.title}>Account Center</h1>
+
+                <div>
+                    <Link to={'/'} className={styles.passNSec}>
+                        <Shield />
+                        <p>Password & security</p>
+                    </Link>
+                </div>
+            </section>
+            
+            <section className={styles.settingsSec}>
+                <h1 className={styles.title}>Audience and visibility</h1>
+
+                <div>
+                    <Link to={'/'} className={styles.passNSec}>
+                        <HatGlasses />
+                        <p>Active Status</p>
+                    </Link>
+                </div>
+            </section>
+        </div>
+
       
     </main>
   )
