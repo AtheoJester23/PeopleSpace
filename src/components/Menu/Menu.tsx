@@ -62,12 +62,12 @@ const Menu = () => {
 
         <ul className={styles.settingsOptList}>
             <li>
-                <div>
+                <Link to={'/settings'} className={styles.Link}>
                     <Settings/>
                     <p>
                         Settings
                     </p>
-                </div>
+                </Link>
             </li>
             <li onClick={() => handleDarkMode()}>
                 <div>

@@ -13,6 +13,7 @@ import RequireAuth from './layouts/RequireAuth'
 import PageNotFound from './components/PageNotFound/PageNotFound'
 import Menu from './components/Menu/Menu'
 import SearchPage from './components/Search/SearchPage'
+import Settings from './pages/Settings/Settings'
 
 function App() {
   const theme = useSelector((state: RootState) => state.theme.mode);
@@ -33,6 +34,7 @@ function App() {
           <Route path='/home' element={<HomePage/>}/>
           <Route path='/menu' element={<Menu/>}/>
           <Route path='/search' element={<SearchPage/>}/>
+          <Route path='/settings' element={<Settings/>}/>
         </Route>
 
         <Route element={<MainLayouts/>}>

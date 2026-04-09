@@ -1,0 +1,17 @@
+.mainCont{
+    height: 200vh;
+    background-color: var(--main-bg)
+}
+
+.fixedContTop{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--nav-bg);
+    color: var(--theme-text);
+    padding: 0px 15px;
+}
+
+.icon{
+    color: var(--theme-text);
+}

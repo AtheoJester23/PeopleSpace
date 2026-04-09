@@ -115,6 +115,16 @@ hr{
     gap: 10px;
 }
 
+.Link{
+    display: flex;
+    color: var(--theme-text);
+    text-decoration: none;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+}
+
 .toggleBtn{
     width: 45px;
     border-radius: 20px;

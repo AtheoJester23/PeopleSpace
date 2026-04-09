@@ -50,7 +50,7 @@ const RequireAuth = () => {
 
   return (
     <>
-        {test.pathname !== '/menu' && test.pathname !== '/Search' && test.pathname !== '/profile/:id' && <Navbar/>}
+        {test.pathname !== '/menu' && test.pathname !== '/Search' && test.pathname !== '/profile/:id' && test.pathname !== '/settings' && <Navbar/>}
         <Outlet/> 
     </>
   )
