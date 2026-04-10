@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styles from './Settings.module.css'
-import { ArrowLeft, HatGlasses, Search, Shield } from 'lucide-react'
+import { ArrowLeft, HatGlasses, Search, Shield, Trash2 } from 'lucide-react'
 
 const Settings = () => {
   return (
@@ -23,8 +23,15 @@ const Settings = () => {
 
                 <div>
                     <Link to={'/'} className={styles.passNSec}>
-                        <Shield />
+                        <Shield aria-hidden="true"/>
                         <p>Password & security</p>
+                    </Link>
+                </div>
+
+                <div>
+                    <Link to={'/'} className={styles.passNSec}>
+                        <Trash2 aria-hidden="true"/>
+                        <p>Delete your account</p>
                     </Link>
                 </div>
             </section>
