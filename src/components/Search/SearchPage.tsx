@@ -10,8 +10,8 @@ const SearchPage = () => {
           <ChevronLeft size={30}/>
         </Link>
         <input type="text" placeholder='Search...' />
-        <button>
-            <Search size={25}/>
+        <button className={styles.searchBtn}>
+            <Search size={25} aria-hidden="true"/>
         </button>        
       </div>
     </main>

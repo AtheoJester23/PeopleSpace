@@ -2,10 +2,12 @@ import styles from './Profile.module.css'
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../state/store';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Pencil, Plus } from 'lucide-react';
+import { style } from 'framer-motion/client';
 
 const Profile = () => {
     const userProf = useSelector((state: RootState) => state.user.profile);
+    const theme = useSelector((state: RootState) => state.theme.mode);
 
     useMemo(() => {
         if(userProf){
@@ -29,7 +31,11 @@ const Profile = () => {
                     </div>
                     
                     <div>
-                        <h1> testing</h1>
+                        <h1 className={styles.profName}> testing</h1>
+                        <div className={styles.profCounts}>
+                            <span>friends</span>
+                            <span>post</span>
+                        </div>
                     </div>
                 </div>
 
@@ -53,6 +59,21 @@ const Profile = () => {
                     )}
                 </div>
             </div>
+
+        </div>
+        
+        <hr />
+
+        <div className={styles.profActions}>
+            <button className={styles.addStory}>
+                <Plus aria-hidden="true"/>
+                Add to story
+            </button>
+
+            <button className={styles.editProf}>
+                <Pencil aria-hidden="true" fill={theme == 'ligth' ? 'white' : 'black'}/>
+                Edit profile
+            </button>
         </div>
 
       

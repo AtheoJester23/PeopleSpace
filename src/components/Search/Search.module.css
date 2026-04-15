@@ -39,3 +39,8 @@
 .fixedContTop input:focus{
     outline: none;
 }
+
+.searchBtn{
+    background-color: var(--main-bg);
+    color: var(--theme-text);
+}

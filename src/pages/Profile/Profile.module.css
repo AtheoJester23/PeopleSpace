@@ -49,6 +49,54 @@
     justify-content: space-between;
 }
 
+.profName{
+    color: var(--theme-text);
+    font-size:18px;
+    margin: 0px;
+}
+
+.profCounts{
+    display: flex;
+    gap: 10px;
+    font-size: 12px;
+    color: gray
+}
+
+.profActions{
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.addStory{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 20px;
+    border: none;
+    background-color: #1452ff;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 10px;
+    width: 50%;
+    justify-content: center;
+}
+
+.editProf{
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    gap: 5px;
+    border: none;
+    background-color: var(--hoverBtn);
+    border-radius: 10px;
+    color: var(--theme-text);
+    font-weight: bold;
+    font-size: 16px;
+}
+
 @media (max-width: 412px){
     .bannerImgCont{
         height: 200px;
@@ -59,14 +107,15 @@
     }
 
     .profImgCont{
-        height: 50px;
-        width: 50px;
+        height: 100px;
+        width: 100px;
     }
 
     .profDeets{
         /* display: none; */
-        padding: 0px;
+        padding: 10px 20px;
         width: 100%;
+        background-color: green;
     }
 
     .bannerImgCont{
